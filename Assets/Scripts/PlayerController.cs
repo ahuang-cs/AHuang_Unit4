@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10f;
+    public float speed = 40f;
 
     private float fwdInput;
     private float fwdMagnitude;
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         fwdInput = Input.GetAxis("Vertical");
         fwdMagnitude = fwdInput * speed * Time.deltaTime;
         colorMagnitude = Mathf.Abs(fwdInput);
-        rb.AddForce(focalPoint.transform.forward * fwdMagnitude, ForceMode.Impulse);
+        rb.AddForce(focalPoint.transform.forward * fwdMagnitude, ForceMode.Force);
         rndr.material.color = new Color(1f - colorMagnitude, 1f,1f - colorMagnitude);
     }
 }
